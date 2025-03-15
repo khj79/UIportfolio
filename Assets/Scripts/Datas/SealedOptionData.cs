@@ -2,10 +2,8 @@ using System;
 using System.Collections.Generic;
 
 [System.Serializable]
-public class SealedOptionData
+public class SealedOptionData : GameData
 {
-    public Int32 Id;
-    public string Comment;
     public Int64 CostGold;
     public Int32 UniqueCostItemId;
     public Int32 NormalCostItemId;

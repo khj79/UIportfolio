@@ -2,10 +2,8 @@ using System;
 using Game.Enums;
 
 [System.Serializable]
-public class StatOptionData
+public class StatOptionData : GameData
 {
-    public Int32 Id;
-    public string Comment;
     public StatOptionCategory Category;
     public Int32 Value;
 }
