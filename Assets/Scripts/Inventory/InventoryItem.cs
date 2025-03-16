@@ -10,7 +10,6 @@ public class InventoryItem
     public int ItemDataId { get; private set; }   
     public int Amount { get; private set; }       
     public List<SealedOptionSlot> SealedOptionSlots { get; private set; }  
-    public bool IsEquipment { get; private set; }  
 
     public InventoryItem(int itemDataId, int amount = 1)
     {
@@ -29,13 +28,11 @@ public class InventoryItem
         switch (itemData.Category)
         {
             case ItemCategory.Equipment when itemData.ExtraData is ItemEquipmentData equipmentData:
-                IsEquipment = true;
                 InitializeSealedOptionSlots(equipmentData);
                 Amount = 1; 
                 break;
 
             case ItemCategory.Material when itemData.ExtraData is ItemMaterialData materialData:
-                IsEquipment = false;
                 Amount = Mathf.Min(amount, materialData.MaxStackCount); 
                 break;
 
