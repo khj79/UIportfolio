@@ -36,9 +36,6 @@ public class DatasheetManager : MonoBehaviour
         // 1️⃣ Reflection을 사용하여 모든 게임 데이터 클래스 로드
         LoadAllDatasheets();
 
-        // 2️⃣ Reflection을 사용하여 자동으로 프로퍼티 매핑
-        AutoMapProperties();
-
         Debug.Log("===== 게임 데이터 로딩 완료 =====");
     }
 
@@ -67,45 +64,32 @@ public class DatasheetManager : MonoBehaviour
             dataDictionaries[dataType] = dataDictionary;
             Debug.Log($"✅ {dataType.Name} 로드 완료: {dataDictionary.Count}개");
         }
+
+        // ✅ 모든 데이터 로드 후 InitializeReferences() 실행
+        InitializeAllReferences();
     }
 
     /// <summary>
-    /// Reflection을 사용하여 자동으로 데이터 매핑
+    /// 모든 GameData의 InitializeReferences()를 실행
     /// </summary>
-    private void AutoMapProperties()
+    private void InitializeAllReferences()
     {
         foreach (var dataDictionary in dataDictionaries)
         {
             Type dataType = dataDictionary.Key;
-            Dictionary<int, GameData> dataInstances = dataDictionary.Value;
+            MethodInfo initMethod = dataType.GetMethod("InitializeReferences", BindingFlags.Public | BindingFlags.Instance);
 
-            foreach (var instance in dataInstances.Values)
+            if (initMethod != null)
             {
-                PropertyInfo[] properties = dataType.GetProperties(BindingFlags.Public | BindingFlags.Instance);
-
-                foreach (PropertyInfo prop in properties)
+                foreach (GameData instance in dataDictionary.Value.Values)
                 {
-                    if (dataDictionaries.ContainsKey(prop.PropertyType))
-                    {
-                        Dictionary<int, GameData> targetDictionary = dataDictionaries[prop.PropertyType];
-
-                        FieldInfo idField = dataType.GetField("Id");
-                        if (idField != null)
-                        {
-                            int id = (int)idField.GetValue(instance);
-
-                            if (targetDictionary.ContainsKey(id))
-                            {
-                                prop.SetValue(instance, targetDictionary[id]);
-                            }
-                        }
-                    }
+                    initMethod.Invoke(instance, null);
                 }
+                Debug.Log($"🔄 {dataType.Name}.InitializeReferences() 실행 완료");
             }
         }
-
-        Debug.Log("✅ Reflection 기반 자동 프로퍼티 매핑 완료");
     }
+
 
     /// <summary>
     /// 특정 ID의 데이터 반환
@@ -119,6 +103,27 @@ public class DatasheetManager : MonoBehaviour
                 return data as T;
             }
         }
+        return null;
+    }
+
+    public Dictionary<int, T> GetDataTable<T>() where T : GameData
+    {
+        if (dataDictionaries.TryGetValue(typeof(T), out var dictionary))
+        {
+            if (dictionary is Dictionary<int, T> typedDictionary)
+            {
+                return typedDictionary;
+            }
+
+            // ✅ Dictionary<int, GameData> → Dictionary<int, T>로 변환
+            var convertedDictionary = dictionary
+                .Where(kvp => kvp.Value is T)
+                .ToDictionary(kvp => kvp.Key, kvp => kvp.Value as T);
+            
+            return convertedDictionary;
+        }
+
+        Debug.LogError($"❌ GetDataTable<{typeof(T).Name}> - {typeof(T).Name}이(가) dataDictionaries에 없음!");
         return null;
     }
 }
