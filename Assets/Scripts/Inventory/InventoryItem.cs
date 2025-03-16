@@ -20,20 +20,28 @@ public class InventoryItem
 
         var itemData = DatasheetManager.Instance.GetData<ItemData>(ItemDataId);
 
-        if (itemData?.ExtraData is ItemEquipmentData equipmentData)
-        {
-            IsEquipment = true;
-            InitializeSealedOptionSlots(equipmentData);
-            Amount = 1; 
-        }
-        else if (itemData?.ExtraData is ItemMaterialData materialData)
-        {
-            IsEquipment = false;
-            Amount = Mathf.Min(amount, materialData.MaxStackCount); 
-        }
-        else
+        if (itemData == null)
         {
             Debug.LogError($"❌ InventoryItem 생성 실패: ItemDataId({ItemDataId})가 유효하지 않음.");
+            return;
+        }
+
+        switch (itemData.Category)
+        {
+            case ItemCategory.Equipment when itemData.ExtraData is ItemEquipmentData equipmentData:
+                IsEquipment = true;
+                InitializeSealedOptionSlots(equipmentData);
+                Amount = 1; 
+                break;
+
+            case ItemCategory.Material when itemData.ExtraData is ItemMaterialData materialData:
+                IsEquipment = false;
+                Amount = Mathf.Min(amount, materialData.MaxStackCount); 
+                break;
+
+            default:
+                Debug.LogError($"❌ InventoryItem 생성 실패: ItemDataId({ItemDataId})의 카테고리({itemData.Category})가 유효하지 않음.");
+                break;
         }
     }
 
@@ -55,7 +63,6 @@ public class InventoryItem
         int uniqueSlotCount = 0;
 
         var itemData = DatasheetManager.Instance.GetData<ItemData>(ItemDataId);
-
         switch (itemData.Rarity)
         {
             case ItemRarity.Rare:
