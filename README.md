@@ -2,7 +2,7 @@
 아래 링크된 게임 시스템 기획서를 바탕으로, ChatGpt를 이용해서 UI 프로토타이핑을 해보는 저장소입니다.
 * [시스템 기획서][systemDoc]
 * [UI 기획서][uiDoc]
-* [WebGL Build](https://github.com/khj79/UIportfolio/)
+* [WebGL Build](https://khj79.github.io/UIportfolio/))
 
 
 [systemDoc]: https://nifty-snowstorm-eed.notion.site/Sealed-Option-1a545cc0b3a580378257da9dc7042eb1
