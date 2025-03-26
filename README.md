@@ -4,9 +4,6 @@
 * [UI 기획서][uiDoc]
 
 
-# ChatGpt와의 작업과정
-* [ChatGpt와의 채팅내역][chatGpt]
-
 [systemDoc]: https://nifty-snowstorm-eed.notion.site/Sealed-Option-1a545cc0b3a580378257da9dc7042eb1
-[uiDoc]: https://www.figma.com/design/5NMFtgIWKW4inFmfLLtiGX/Portfolio---%EB%A7%88%EB%B2%95%EB%B4%89%EC%9D%B8-UI?node-id=7-56&m=dev&t=2XrU8t2tT1KX093E-1
+[uiDoc]: https://www.figma.com/design/5NMFtgIWKW4inFmfLLtiGX/Portfolio---%EB%A7%88%EB%B2%95%EB%B4%89%EC%9D%B8-UI?node-id=7-56&t=4KlAED04d0YwK2QY-1
 [chatGpt]: https://chatgpt.com/share/67d578d7-22f4-8011-84e6-bb78fe9dd053
