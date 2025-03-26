@@ -1,3 +1,6 @@
+using System.Collections.Generic;
+using UnityEngine;
+
 namespace Game.Enums
 {
     public enum ItemRarity
@@ -44,5 +47,19 @@ namespace Game.Enums
     {
         Unique,
         Normal
+    }
+
+    public enum ItemCardState
+    {
+        Selected,
+        Unselected
+    }
+
+    public enum SealedOptionSlotState
+    {
+        Empty,
+        Normal,
+        Silver,
+        Gold
     }
 }
