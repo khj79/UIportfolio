@@ -12,11 +12,6 @@ public class SealedOptionEntryData : GameData
     public Int32 StatOptionId;
     public StatOptionData StatOption { get; private set; }
 
-    public void InitializeReferences()
-    {
-        StatOption = GetStatOption();
-    }
-
     private StatOptionData GetStatOption()
     {
         if (StatOptionId == 0)
@@ -31,5 +26,15 @@ public class SealedOptionEntryData : GameData
         }
 
         return statOption;
+    }
+
+    public void InitializeReferences()
+    {
+        StatOption = GetStatOption();
+    }
+
+    public override bool Validate()
+    {
+        return base.Validate();
     }
 }

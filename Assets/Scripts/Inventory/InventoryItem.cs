@@ -6,10 +6,10 @@ using Game.Enums;
 [System.Serializable]
 public class InventoryItem
 {
-    public string UniqueId { get; private set; }  
-    public int ItemDataId { get; private set; }   
-    public int Amount { get; private set; }       
-    public List<SealedOptionSlot> SealedOptionSlots { get; private set; }  
+    public string UniqueId;
+    public int ItemDataId;
+    public int Amount;
+    public List<SealedOptionSlot> SealedOptionSlots;
 
     public InventoryItem(int itemDataId, int amount = 1)
     {
@@ -74,11 +74,11 @@ public class InventoryItem
                 break;
         }
 
-        for (int i = 0; i < normalSlotCount; i++)
-            SealedOptionSlots.Add(new SealedOptionSlot(SealedOptionGroupCategory.Normal));
-
         for (int i = 0; i < uniqueSlotCount; i++)
             SealedOptionSlots.Add(new SealedOptionSlot(SealedOptionGroupCategory.Unique));
+
+        for (int i = 0; i < normalSlotCount; i++)
+            SealedOptionSlots.Add(new SealedOptionSlot(SealedOptionGroupCategory.Normal));
     }
 
     public void EquipSealedOption(int slotIndex, SealedOptionEntryData option)

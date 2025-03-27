@@ -52,4 +52,9 @@ public class ItemData : GameData
         }
         return material;
     }
+
+    public override bool Validate()
+    {
+        return base.Validate();
+    }
 }

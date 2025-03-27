@@ -13,16 +13,6 @@ public class SealedOptionData : GameData
     public ItemData NormalCostItem { get; private set; }
     public List<SealedOptionGroupData> SealedOptionGroups { get; private set; }
 
-    public void InitializeReferences()
-    {
-        
-        var sealedOptionGroups = DatasheetManager.Instance.GetDataTable<SealedOptionGroupData>();
-
-        UniqueCostItem = GetUniqueCostItem();
-        NormalCostItem = GetNormalCostItem();
-        SealedOptionGroups = GetSealedOptionGroups();
-    }
-
     private ItemData GetUniqueCostItem()
     {
         if (UniqueCostItemId == 0)
@@ -72,5 +62,17 @@ public class SealedOptionData : GameData
         }
 
         return list;
+    }
+
+    public void InitializeReferences()
+    {
+        UniqueCostItem = GetUniqueCostItem();
+        NormalCostItem = GetNormalCostItem();
+        SealedOptionGroups = GetSealedOptionGroups();
+    }
+
+    public override bool Validate()
+    {
+        return base.Validate();
     }
 }

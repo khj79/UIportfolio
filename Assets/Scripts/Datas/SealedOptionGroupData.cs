@@ -10,11 +10,6 @@ public class SealedOptionGroupData : GameData
     public List<Int32> SealedOptionEntryIds;
     public List<SealedOptionEntryData> SealedOptionEntries { get; private set; }
 
-    public void InitializeReferences()
-    {
-        SealedOptionEntries = GetSealedOptionEntries();
-    }
-
     private List<SealedOptionEntryData> GetSealedOptionEntries()
     {
         if (SealedOptionEntryIds == null || SealedOptionEntryIds.Count == 0)
@@ -34,5 +29,15 @@ public class SealedOptionGroupData : GameData
         }
 
         return list;
+    }
+
+    public void InitializeReferences()
+    {
+        SealedOptionEntries = GetSealedOptionEntries();
+    }
+
+    public override bool Validate()
+    {
+        return base.Validate();
     }
 }

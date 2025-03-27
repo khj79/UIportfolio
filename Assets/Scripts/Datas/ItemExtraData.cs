@@ -3,7 +3,13 @@ using Game.Enums;
 using UnityEngine;
 
 [System.Serializable]
-public class ItemExtraData : GameData { }
+public class ItemExtraData : GameData
+{
+    public override bool Validate()
+    {
+        return base.Validate();
+    }
+}
 
 [System.Serializable]
 public class ItemEquipmentData : ItemExtraData
@@ -13,11 +19,6 @@ public class ItemEquipmentData : ItemExtraData
     public EquipSlot Slot;
     public Int32 SealedOptionDataId;
     public SealedOptionData SealedOption { get; private set; }
-
-    public void InitializeReferences()
-    {
-        SealedOption = GetSealedOption();
-    }
 
     private SealedOptionData GetSealedOption()
     {
@@ -34,6 +35,16 @@ public class ItemEquipmentData : ItemExtraData
 
         return sealedOption;
     }
+
+    public void InitializeReferences()
+    {
+        SealedOption = GetSealedOption();
+    }
+
+    public override bool Validate()
+    {
+        return base.Validate();
+    }
 }
 
 [System.Serializable]
@@ -41,4 +52,9 @@ public class ItemMaterialData : ItemExtraData
 {
     public MaterialCategory Category;
     public Int32 MaxStackCount;
+
+    public override bool Validate()
+    {
+        return base.Validate();
+    }
 }

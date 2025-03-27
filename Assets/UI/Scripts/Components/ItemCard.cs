@@ -18,15 +18,7 @@ public class ItemCard : MonoBehaviour
 
     private void Update()
     {
-        // 테스트: 숫자 1 키 누르면 Selected, 2 누르면 Unselected
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            SetState(ItemCardState.Selected);
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            SetState(ItemCardState.Unselected);
-        }
+
     }
 
     public void SetState(ItemCardState state)

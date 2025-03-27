@@ -4,44 +4,23 @@ using System.Linq;
 using System.Reflection;
 using UnityEngine;
 
-public class DatasheetManager : MonoBehaviour
+public class DatasheetManager
 {
-    public static DatasheetManager Instance { get; private set; }
+    public static DatasheetManager Instance { get; private set; } = new DatasheetManager();
 
-    public Dictionary<Type, Dictionary<int, GameData>> dataDictionaries;
+    private Dictionary<Type, Dictionary<int, GameData>> dataDictionaries;
 
-    private void Awake()
-    {
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-            Init();
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-    }
-
-    /// <summary>
-    /// 모든 게임 데이터를 로드하고 자동으로 매핑
-    /// </summary>
-    private void Init()
+    public void Init()
     {
         Debug.Log("===== 게임 데이터 로딩 시작 =====");
 
         dataDictionaries = new Dictionary<Type, Dictionary<int, GameData>>();
 
-        // 1️⃣ Reflection을 사용하여 모든 게임 데이터 클래스 로드
         LoadAllDatasheets();
 
         Debug.Log("===== 게임 데이터 로딩 완료 =====");
     }
 
-    /// <summary>
-    /// GameData를 상속받은 모든 클래스 자동 검색 및 로드
-    /// </summary>
     private void LoadAllDatasheets()
     {
         Assembly assembly = Assembly.GetExecutingAssembly();
@@ -65,13 +44,9 @@ public class DatasheetManager : MonoBehaviour
             Debug.Log($"✅ {dataType.Name} 로드 완료: {dataDictionary.Count}개");
         }
 
-        // ✅ 모든 데이터 로드 후 InitializeReferences() 실행
         InitializeAllReferences();
     }
 
-    /// <summary>
-    /// 모든 GameData의 InitializeReferences()를 실행
-    /// </summary>
     private void InitializeAllReferences()
     {
         foreach (var dataDictionary in dataDictionaries)
@@ -90,10 +65,6 @@ public class DatasheetManager : MonoBehaviour
         }
     }
 
-
-    /// <summary>
-    /// 특정 ID의 데이터 반환
-    /// </summary>
     public T GetData<T>(int id) where T : GameData
     {
         if (dataDictionaries.TryGetValue(typeof(T), out var dictionary))
@@ -115,11 +86,10 @@ public class DatasheetManager : MonoBehaviour
                 return typedDictionary;
             }
 
-            // ✅ Dictionary<int, GameData> → Dictionary<int, T>로 변환
             var convertedDictionary = dictionary
                 .Where(kvp => kvp.Value is T)
                 .ToDictionary(kvp => kvp.Key, kvp => kvp.Value as T);
-            
+
             return convertedDictionary;
         }
 
