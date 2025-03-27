@@ -7,8 +7,6 @@ using UnityEngine;
 
 public static class DatasheetLoader
 {
-    private static readonly string folderPath = Path.Combine(Application.streamingAssetsPath, "Datasheets");
-
     /// <summary>
     /// 특정 데이터 클래스를 기반으로 CSV를 로드하여 객체 리스트로 변환
     /// </summary>
@@ -24,15 +22,7 @@ public static class DatasheetLoader
         }
 
         string fileName = $"{type.Name}.csv"; // ✅ 클래스명과 동일한 CSV 파일 찾기
-        string path = Path.Combine(folderPath, fileName);
-
-        if (!File.Exists(path))
-        {
-            string errorMessage = $"❌ [Critical] 필수 게임 데이터 {fileName}이(가) 없습니다! 게임 실행 불가!";
-            Debug.LogError(errorMessage);
-            throw new FileNotFoundException(errorMessage);
-        }
-
+        
         List<Dictionary<string, string>> csvData = CsvLoader.LoadCsv(fileName);
         if (csvData.Count == 0)
         {

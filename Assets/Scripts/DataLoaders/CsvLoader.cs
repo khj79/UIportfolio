@@ -5,22 +5,21 @@ using UnityEngine;
 
 public static class CsvLoader
 {
-    private static readonly string folderPath = Path.Combine(Application.streamingAssetsPath, "Datasheets"); // ✅ CSV 파일 저장 경로
-
     /// <summary>
     /// CSV 파일을 읽어와 Dictionary<string, string> 형태로 반환 (PC 전용)
     /// </summary>
     public static List<Dictionary<string, string>> LoadCsv(string fileName)
     {
-        string path = Path.Combine(folderPath, fileName);
-
-        if (!File.Exists(path))
+        string fileNameWithoutExtension = Path.GetFileNameWithoutExtension(fileName);
+        TextAsset csvFile = Resources.Load<TextAsset>($"Datasheets/{fileNameWithoutExtension}");
+        
+        if (csvFile == null)
         {
-            Debug.LogError($"CSV 파일을 찾을 수 없습니다: {path}");
+            Debug.LogError($"CSV 파일을 Resources에서 찾을 수 없습니다: {fileName}");
             return new List<Dictionary<string, string>>();
         }
 
-        string[] lines = File.ReadAllLines(path);
+        string[] lines = csvFile.text.Split(new[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
         return ParseCsv(lines);
     }
 
