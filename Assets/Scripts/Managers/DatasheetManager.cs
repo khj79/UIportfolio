@@ -12,13 +12,8 @@ public class DatasheetManager
 
     public void Init()
     {
-        Debug.Log("===== 게임 데이터 로딩 시작 =====");
-
         dataDictionaries = new Dictionary<Type, Dictionary<int, GameData>>();
-
         LoadAllDatasheets();
-
-        Debug.Log("===== 게임 데이터 로딩 완료 =====");
     }
 
     private void LoadAllDatasheets()
@@ -41,7 +36,6 @@ public class DatasheetManager
             }
 
             dataDictionaries[dataType] = dataDictionary;
-            Debug.Log($"✅ {dataType.Name} 로드 완료: {dataDictionary.Count}개");
         }
 
         InitializeAllReferences();
@@ -60,7 +54,6 @@ public class DatasheetManager
                 {
                     initMethod.Invoke(instance, null);
                 }
-                Debug.Log($"🔄 {dataType.Name}.InitializeReferences() 실행 완료");
             }
         }
     }

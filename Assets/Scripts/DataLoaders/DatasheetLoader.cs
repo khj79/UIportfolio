@@ -14,10 +14,9 @@ public static class DatasheetLoader
     {
         Type type = typeof(T);
 
-        // ✅ 빈 클래스는 CSV를 가질 수 없으므로 예외 처리
+        // ✅ 빈 클래스는 CSV를 가질 수 없으므로 예외 처리 e.g., ItemExtraData
         if (IsEmptyClass(type))
         {
-            Debug.Log($"⚠️ {type.Name} 클래스는 필드와 프로퍼티가 없으므로 로드하지 않습니다.");
             return new List<T>();
         }
 

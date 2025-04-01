@@ -81,6 +81,32 @@ public class InventoryItem
             SealedOptionSlots.Add(new SealedOptionSlot(SealedOptionGroupCategory.Normal));
     }
 
+    public bool Validate()
+    {
+        var itemData = DatasheetManager.Instance.GetData<ItemData>(ItemDataId);
+        bool isValid = true;
+
+        if (itemData == null || !itemData.Validate())
+        {
+            Debug.LogWarning($"⚠️ 잘못된 ItemData: ItemDataId = {ItemDataId}, UniqueId = {UniqueId}");
+            isValid = false;
+        }
+
+        if (SealedOptionSlots != null)
+        {
+            for (int i = 0; i < SealedOptionSlots.Count; i++)
+            {
+                var slot = SealedOptionSlots[i];
+                if (!slot.Validate($"SlotIndex = {i}, Item UniqueId = {UniqueId}"))
+                {
+                    isValid = false;
+                }
+            }
+        }
+
+        return isValid;
+    }
+
     public void EquipSealedOption(int slotIndex, SealedOptionEntryData option)
     {
         if (SealedOptionSlots == null || slotIndex < 0 || slotIndex >= SealedOptionSlots.Count)
