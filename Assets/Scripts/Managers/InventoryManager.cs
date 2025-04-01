@@ -13,6 +13,10 @@ public class InventoryManager
     private const string InventoryKey = "InventoryData";
     public List<InventoryItem> Items { get; private set; } = new List<InventoryItem>();
 
+    public event Action<InventoryItem> OnItemAdded;
+    public event Action<InventoryItem> OnItemRemoved;
+    public event Action<List<InventoryItem>> OnInventoryLoaded;
+
     public void Init()
     {
         LoadInventory();
@@ -22,6 +26,7 @@ public class InventoryManager
     {
         Items.Add(item);
         Debug.Log($"✅ 아이템 추가됨: {item.ItemDataId}, 현재 개수: {Items.Count}");
+        OnItemAdded?.Invoke(item);
     }
 
     public void RemoveLastItem()
@@ -30,6 +35,7 @@ public class InventoryManager
         var removed = Items[^1];
         Items.RemoveAt(Items.Count - 1);
         Debug.Log($"❌ 마지막 아이템 제거됨: {removed.ItemDataId}, 남은 개수: {Items.Count}");
+        OnItemRemoved?.Invoke(removed);
     }
 
     public void Clear()
@@ -65,6 +71,9 @@ public class InventoryManager
                     Items.Add(item);
                 }
             }
+
+            Debug.Log($"📦 인벤토리 로드 완료: {Items.Count}개");
+            OnInventoryLoaded?.Invoke(Items);
 
         }
         catch (Exception ex)

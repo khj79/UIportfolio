@@ -5,17 +5,31 @@ using UnityEngine.UI;
 public class SealedOptionSlotLabeler : MonoBehaviour
 {
     [SerializeField] private Image icon;
-    [SerializeField] private Sprite transparent;
+    [SerializeField] private Image frame;
     [SerializeField] private Sprite normal;
     [SerializeField] private Sprite silver;
     [SerializeField] private Sprite gold;
+    [SerializeField] private Sprite defaultFrame;
+    [SerializeField] private Sprite yellowFrame;
 
-     public void ApplyState(SealedOptionSlotState state)
+    public void ApplyFrameColor(SealedOptionGroupCategory category)
+    {
+        switch (category)
+        {
+            case SealedOptionGroupCategory.Unique:
+                frame.sprite = yellowFrame;
+                return;
+            default:
+                frame.sprite = defaultFrame;
+                return;
+        }
+    }
+
+    public void ApplyState(SealedOptionSlotState state)
     {
         switch (state)
         {
             case SealedOptionSlotState.Empty:
-                icon.sprite = transparent;
                 icon.gameObject.SetActive(false);
                 break;
 

@@ -112,7 +112,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
   m_AnchoredPosition: {x: 0, y: 35}
-  m_SizeDelta: {x: 28, y: 28}
+  m_SizeDelta: {x: 32, y: 32}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7591078449466755923
 CanvasRenderer:
@@ -142,7 +142,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 8cdbca6ea550e2a42a091eeea9ac84ad, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5cd1cc1cf76c93d419ee164dc7f26d27, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -164,7 +164,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 973c2807041d99249b70072b42918bbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  icon: {fileID: 0}
+  icon: {fileID: 3614544346193778712}
+  frame: {fileID: 5231645802401775454}
   normal: {fileID: 21300000, guid: 706be2b2943a7ba409cd9efad6cf4f97, type: 3}
   silver: {fileID: 21300000, guid: 87ba5a882b7a31e4681e7ffe257a38e5, type: 3}
   gold: {fileID: 21300000, guid: d498142ec6ee22d419a8c3c6c09c474d, type: 3}
+  defaultFrame: {fileID: 21300000, guid: 5cd1cc1cf76c93d419ee164dc7f26d27, type: 3}
+  yellowFrame: {fileID: 21300000, guid: 1545649b2d8c41b43b0882c907c13f17, type: 3}

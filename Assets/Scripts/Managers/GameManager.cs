@@ -1,11 +1,13 @@
 using System;
 using UnityEngine;
+using Game.Enums;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
-    [SerializeField]
-    private InventoryInputTester tester;
+    [SerializeField] private InventoryInputTester tester;
+    [SerializeField] private CharacterClass currentClass = CharacterClass.Asura;
+    public CharacterClass CurrentClass => currentClass;
 
     private void Awake()
     {

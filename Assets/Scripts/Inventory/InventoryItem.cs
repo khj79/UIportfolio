@@ -107,6 +107,11 @@ public class InventoryItem
         return isValid;
     }
 
+    public ItemData GetItemData()
+    {
+        return DatasheetManager.Instance.GetData<ItemData>(ItemDataId);
+    }
+
     public void EquipSealedOption(int slotIndex, SealedOptionEntryData option)
     {
         if (SealedOptionSlots == null || slotIndex < 0 || slotIndex >= SealedOptionSlots.Count)
