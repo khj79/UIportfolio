@@ -49,7 +49,7 @@ public class SealedOptionViewController : MonoBehaviour
         selectedCard = null;
     }
 
-    public void Init()
+    public void Start()
     {
         InventoryManager.Instance.OnInventoryLoaded += OnInventoryLoaded;
         InventoryManager.Instance.OnInventoryCleared += OnInventoryCleared;
