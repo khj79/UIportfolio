@@ -380,7 +380,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5122e9e7e5271ed47ab609a39af7d5c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sealedOptionViewController: {fileID: 1925730269}
+  sealedOptionViewController: {fileID: 0}
   tester: {fileID: 336714714}
   currentClass: 3
 --- !u!114 &336714714
@@ -418,18 +418,18 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 345270711}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 873193232}
-  m_Father: {fileID: 1406093456}
+  m_Father: {fileID: 840050059}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: -320}
+  m_AnchoredPosition: {x: -100, y: 75}
+  m_SizeDelta: {x: 100, y: -170}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!1 &352054449
 GameObject:
@@ -685,8 +685,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 840050059}
+  - component: {fileID: 840050060}
   m_Layer: 5
-  m_Name: MainContent
+  m_Name: SealedOptionView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -704,6 +705,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 345270712}
   - {fileID: 1045943609}
   - {fileID: 1467698040}
   m_Father: {fileID: 1406093456}
@@ -713,6 +715,20 @@ RectTransform:
   m_AnchoredPosition: {x: 100, y: -150}
   m_SizeDelta: {x: -100, y: -150}
   m_Pivot: {x: 0, y: 1}
+--- !u!114 &840050060
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 840050058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a47c11e979d60f145b2907970902e740, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemCardParent: {fileID: 1204888108}
+  itemCardPrefab: {fileID: 8140550738397129671, guid: bf4b62ab76e9d564c81c4db726463a87, type: 3}
 --- !u!1 &873193231
 GameObject:
   m_ObjectHideFlags: 0
@@ -1101,7 +1117,6 @@ RectTransform:
   - {fileID: 1925730268}
   - {fileID: 1440909316}
   - {fileID: 949337704}
-  - {fileID: 345270712}
   - {fileID: 840050059}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1531,7 +1546,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1925730268}
-  - component: {fileID: 1925730269}
   m_Layer: 5
   m_Name: Controllers
   m_TagString: Untagged
@@ -1558,20 +1572,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -1920, y: -1080}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1925730269
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1925730267}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a47c11e979d60f145b2907970902e740, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemCardParent: {fileID: 1204888108}
-  itemCardPrefab: {fileID: 8140550738397129671, guid: bf4b62ab76e9d564c81c4db726463a87, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
