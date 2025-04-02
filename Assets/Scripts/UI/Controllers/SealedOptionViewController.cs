@@ -94,7 +94,7 @@ public class SealedOptionViewController : MonoBehaviour
         }
     }
 
-    private void OnInventoryCleared(List<InventoryItem> items)
+    private void OnInventoryCleared()
     {
         ClearAll();
     }
