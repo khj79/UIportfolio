@@ -16,6 +16,7 @@ public class InventoryManager
     public event Action<InventoryItem> OnItemAdded;
     public event Action<InventoryItem> OnItemRemoved;
     public event Action<List<InventoryItem>> OnInventoryLoaded;
+    public event Action<List<InventoryItem>> OnInventoryCleared;
 
     public void Init()
     {
@@ -42,6 +43,7 @@ public class InventoryManager
     {
         Items.Clear();
         Debug.Log("🧹 인벤토리 전체 초기화 완료");
+        OnInventoryCleared?.Invoke(Items);
     }
 
     public void SaveInventory()

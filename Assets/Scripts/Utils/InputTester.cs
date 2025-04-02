@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class InventoryInputTester : MonoBehaviour
+public class InputTester : MonoBehaviour
 {
     void Update()
     {

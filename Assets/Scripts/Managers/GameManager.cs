@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private SealedOptionViewController sealedOptionViewController;
 
     [Header("Test")]
-    [SerializeField] private InventoryInputTester tester;
+    [SerializeField] private InputTester tester;
     [SerializeField] private CharacterClass currentClass = CharacterClass.Asura;
     public CharacterClass CurrentClass => currentClass;
 

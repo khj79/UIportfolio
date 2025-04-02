@@ -52,6 +52,7 @@ public class SealedOptionViewController : MonoBehaviour
     public void Init()
     {
         InventoryManager.Instance.OnInventoryLoaded += OnInventoryLoaded;
+        InventoryManager.Instance.OnInventoryCleared += OnInventoryCleared;
         InventoryManager.Instance.OnItemAdded += OnItemAdded;
         InventoryManager.Instance.OnItemRemoved += OnItemRemoved;
 
@@ -91,5 +92,10 @@ public class SealedOptionViewController : MonoBehaviour
         {
             AddItem(item);
         }
+    }
+
+    private void OnInventoryCleared(List<InventoryItem> items)
+    {
+        ClearAll();
     }
 }
