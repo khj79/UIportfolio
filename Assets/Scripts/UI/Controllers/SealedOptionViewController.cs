@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InventoryController : MonoBehaviour
+public class SealedOptionViewController : MonoBehaviour
 {
     [SerializeField] private Transform itemCardParent;
     [SerializeField] private GameObject itemCardPrefab;
@@ -49,11 +49,17 @@ public class InventoryController : MonoBehaviour
         selectedCard = null;
     }
 
-    private void Start()
+    public void Init()
     {
         InventoryManager.Instance.OnInventoryLoaded += OnInventoryLoaded;
         InventoryManager.Instance.OnItemAdded += OnItemAdded;
         InventoryManager.Instance.OnItemRemoved += OnItemRemoved;
+
+        // 초기 상태 처리도 여기서 필요하면 수행
+        if (InventoryManager.Instance.Items.Count > 0)
+        {
+            OnInventoryLoaded(InventoryManager.Instance.Items);
+        }
     }
 
     private void OnDestroy()

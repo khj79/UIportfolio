@@ -5,6 +5,10 @@ using Game.Enums;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
+    [Header("Controller")]
+    [SerializeField] private SealedOptionViewController sealedOptionViewController;
+
+    [Header("Test")]
     [SerializeField] private InventoryInputTester tester;
     [SerializeField] private CharacterClass currentClass = CharacterClass.Asura;
     public CharacterClass CurrentClass => currentClass;
@@ -22,6 +26,8 @@ public class GameManager : MonoBehaviour
 
         DatasheetManager.Instance.Init();
         InventoryManager.Instance.Init();
+        
+        sealedOptionViewController.Init();
     }
 
     private void OnApplicationQuit()
