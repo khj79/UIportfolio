@@ -1,5 +1,5 @@
 using System;
-using Game.Enums;
+using Game.Data.Enums;
 
 [System.Serializable]
 public class StatOptionData : GameData

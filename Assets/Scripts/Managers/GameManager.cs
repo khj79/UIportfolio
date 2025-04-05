@@ -1,6 +1,6 @@
 using System;
 using UnityEngine;
-using Game.Enums;
+using Game.Data.Enums;
 
 public class GameManager : MonoBehaviour
 {

@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using System.Reflection;
+using Game.Data.Enums;
 
 public class InventoryManager
 {
@@ -87,7 +86,7 @@ public class InventoryManager
     public void AddRandomItem()
     {
         var allItems = DatasheetManager.Instance.GetDataTable<ItemData>()
-            .Values.Where(item => item.Category == Game.Enums.ItemCategory.Equipment)
+            .Values.Where(item => item.Category == ItemCategory.Equipment)
             .ToList();
 
         if (allItems.Count == 0)

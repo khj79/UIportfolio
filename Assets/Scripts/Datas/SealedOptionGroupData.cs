@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using Game.Enums;
+using Game.Data.Enums;
 
 [System.Serializable]
 public class SealedOptionGroupData : GameData

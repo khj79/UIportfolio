@@ -1,5 +1,5 @@
 using UnityEngine;
-using Game.Enums;
+using Game.Data.Enums;
 using System.Collections.Generic;
 
 public class RarityInfo

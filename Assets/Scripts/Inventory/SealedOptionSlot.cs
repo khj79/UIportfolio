@@ -1,5 +1,5 @@
 using UnityEngine;
-using Game.Enums;
+using Game.Data.Enums;
 
 [System.Serializable]
 public class SealedOptionSlot

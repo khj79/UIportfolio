@@ -1,4 +1,4 @@
-using Game.Enums;
+using Game.Data.Enums;
 
 public static class ItemRarityExtensions
 {

@@ -1,4 +1,5 @@
-using Game.Enums;
+using Game.Data.Enums;
+using Game.UI.Enums;
 using UnityEngine;
 using UnityEngine.UI;
 

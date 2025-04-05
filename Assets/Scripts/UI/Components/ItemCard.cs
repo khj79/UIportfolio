@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using TMPro;
 using DG.Tweening;
 using System;
-using Game.Enums;
+using Game.UI.Enums;
 
 public class ItemCard : MonoBehaviour
 {
