@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-public static class EnumTextExtensions
+public static class EnumExtensions
 {
     private static readonly Dictionary<Type, string[]> _enumTextCache = new();
 
