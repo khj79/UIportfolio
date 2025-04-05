@@ -27,7 +27,7 @@ public class RarityLabeler : MonoBehaviour
         var info = RarityInfo.Get(rarity);
 
         if (background != null)
-            background.color = info.Color;
+            background.color = info.BgColor;
 
         if (rarityText != null)
             rarityText.text = info.Text;
