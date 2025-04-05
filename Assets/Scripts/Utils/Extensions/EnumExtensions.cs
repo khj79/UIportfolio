@@ -5,7 +5,7 @@ public static class EnumTextExtensions
 {
     private static readonly Dictionary<Type, string[]> _enumTextCache = new();
 
-    public static string ToText<TEnum>(this TEnum value) where TEnum : Enum
+    public static string ToString<TEnum>(this TEnum value) where TEnum : Enum
     {
         var type = typeof(TEnum);
 
