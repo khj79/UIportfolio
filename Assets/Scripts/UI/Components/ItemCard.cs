@@ -51,11 +51,7 @@ public class ItemCard : MonoBehaviour
 
         var data = item.GetItemData();
         iconImage.sprite = LoadIcon(data.IconPath);
-
-        var sb = new System.Text.StringBuilder();
-        sb.Append((data.ExtraData as ItemEquipmentData)?.Level ?? 0);
-        levelText.text = sb.ToString();
-
+        levelText.text = ((data.ExtraData as ItemEquipmentData)?.Level ?? 0).ToString();
         rarityLabeler.SetRarity(data.Rarity);
 
         // 기존 슬롯 제거
