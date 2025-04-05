@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 public class RarityInfo
 {
+    //일단 여긴 하드코딩
     private static readonly Dictionary<ItemRarity, RarityInfo> _map = new()
     {
         { ItemRarity.Common,   new RarityInfo("커먼",   "#757575") },
